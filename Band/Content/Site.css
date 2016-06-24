@@ -9,8 +9,8 @@
     padding-right: 15px;
 }
 
-/* Override the default bootstrap behavior where horizontal description lists 
-   will truncate terms that are too long to fit in the left column 
+/* Override the default bootstrap behavior where horizontal description lists
+   will truncate terms that are too long to fit in the left column
 */
 .dl-horizontal dt {
     white-space: normal;
@@ -21,4 +21,33 @@ input,
 select,
 textarea {
     max-width: 280px;
+}
+
+.bandList li{
+    margin : 20px;
+    width:170px;
+    height:200px;
+    background-color:#fff;
+    border : 1px solid #cccccc;
+    list-style:none;
+
+    overflow: hidden;
+    position: relative;
+    display: inline-block;
+    font-size: 13px;
+    vertical-align: top;
+}
+
+.menuBarDiv{
+    color:#ffffff;
+    float:left;
+}
+
+.bandSearch{
+    color:#2b2790;
+    text-align:center;
+}
+
+.bandList li a{
+    text-decoration:none;
 }

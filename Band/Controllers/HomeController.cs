@@ -8,6 +8,8 @@ namespace Band.Controllers
 {
     public class HomeController : Controller
     {
+        BoardService boardService = new BoardService();
+
         public ActionResult Index()
         {
             return View();
