@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+  <objects xmlns="http://www.springframework.net"
+           xmlns:db="http://www.springframework.net/database"
+           xmlns:tx="http://www.springframework.net/tx">
+
+    <db:provider id="DbProvider" provider="System.Data.SqlClient" connectionString="SERVER=192.168.1.76 ;DATABASE=StudyBand;USER ID=sa; PASSWORD=ad!@#0"/>
+    <!--<db:provider id="DbProvider_AdprintNewDB" provider="System.Data.SqlClient" connectionString="SERVER=192.168.1.45 ;DATABASE=adprintNewDB;USER ID=web; PASSWORD=xlzns!@#0"/>
+  <db:provider id="DbProvider_OrderMall" provider="System.Data.SqlClient" connectionString="SERVER=192.168.1.45 ;DATABASE=OrderMall;USER ID=web; PASSWORD=xlzns!@#0"/>
+  <db:provider id="DbProvider_JangBoGo" provider="System.Data.SqlClient" connectionString="SERVER=192.168.1.45 ;DATABASE=JangBoGo;USER ID=web; PASSWORD=xlzns!@#0"/>
+  <db:provider id="DbProvider_Placard" provider="System.Data.SqlClient" connectionString="SERVER=192.168.1.45 ;DATABASE=Placard;USER ID=web; PASSWORD=xlzns!@#0"/>
+  <db:provider id="DbProvider_YSR" provider="System.Data.SqlClient" connectionString="SERVER=125.141.231.144 ;DATABASE=YSR;USER ID=web; PASSWORD=xlzns!@#0"/>-->
+    <!--<db:provider id="DbProvider_MySql" provider="MySql.Data.MySqlClient" connectionString="Server=localhost;Database=mysql;User ID=root;Password=ad!@#0;" />-->
+
+    <object id="IISMailServiceHost" type="System.String">
+      <constructor-arg value="127.0.0.1"/>
+    </object>
+
+    <object id="AdoTemplate" type="Spring.Data.Generic.AdoTemplate, Spring.Data">
+      <property name="DbProvider" ref="DbProvider"/>
+      <property name="DataReaderWrapperType" value="JangBoGo.Data.Support.YsrNullMappingDataReader, JangBoGo"/>
+      <property name="CommandTimeout" value="60" />
+    </object>
+    <!--<object id="AdoTemplate_AdprintNewDB" type="Spring.Data.Generic.AdoTemplate, Spring.Data">
+    <property name="DbProvider" ref="DbProvider_AdprintNewDB"/>
+    <property name="DataReaderWrapperType" value="JangBoGo.Data.Support.YsrNullMappingDataReader, JangBoGo"/>
+    <property name="CommandTimeout" value="60" />
+  </object>
+  <object id="AdoTemplate_OrderMall" type="Spring.Data.Generic.AdoTemplate, Spring.Data">
+    <property name="DbProvider" ref="DbProvider_OrderMall"/>
+    <property name="DataReaderWrapperType" value="JangBoGo.Data.Support.YsrNullMappingDataReader, JangBoGo"/>
+    <property name="CommandTimeout" value="60" />
+  </object>
+  <object id="AdoTemplate_JangBoGo" type="Spring.Data.Generic.AdoTemplate, Spring.Data">
+    <property name="DbProvider" ref="DbProvider_JangBoGo"/>
+    <property name="DataReaderWrapperType" value="JangBoGo.Data.Support.YsrNullMappingDataReader, JangBoGo"/>
+    <property name="CommandTimeout" value="60" />
+  </object>
+  <object id="AdoTemplate_Placard" type="Spring.Data.Generic.AdoTemplate, Spring.Data">
+    <property name="DbProvider" ref="DbProvider_Placard"/>
+    <property name="DataReaderWrapperType" value="JangBoGo.Data.Support.YsrNullMappingDataReader, JangBoGo"/>
+    <property name="CommandTimeout" value="60" />
+  </object>
+  <object id="AdoTemplate_YSR" type="Spring.Data.Generic.AdoTemplate, Spring.Data">
+    <property name="DbProvider" ref="DbProvider_YSR"/>
+    <property name="DataReaderWrapperType" value="JangBoGo.Data.Support.YsrNullMappingDataReader, JangBoGo"/>
+    <property name="CommandTimeout" value="60" />
+  </object>-->
+    <!--<object id="AdoTemplate_MySql" type="Spring.Data.Generic.AdoTemplate, Spring.Data">
+    <property name="DbProvider" ref="DbProvider_MySql"/>
+    <property name="DataReaderWrapperType" value="JangBoGo.Data.Support.YsrNullMappingDataReader, JangBoGo"/>
+    <property name="CommandTimeout" value="60" />
+  </object>-->
+    <object id="transactionManager" type="Spring.Data.Core.AdoPlatformTransactionManager, Spring.Data">
+      <property name="DbProvider" ref="DbProvider" />
+    </object>
+    <tx:attribute-driven />
+  </objects>

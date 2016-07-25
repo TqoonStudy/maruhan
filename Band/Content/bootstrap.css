@@ -473,9 +473,11 @@ h6,
 .h4,
 .h5,
 .h6 {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-weight: 500;
-  line-height: 1.1;
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji",NotoColorEmoji,"Segoe UI Symbol","Android Emoji",EmojiSymbols;
+  font-weight: 400;
+  font-size:13px;
+  line-height: 1.8;
+  color:#666;
 }
 
 h1 small,
@@ -492,7 +494,7 @@ h6 small,
 .h6 small {
   font-weight: normal;
   line-height: 1;
-  color: #999999;
+  color: #666;
 }
 
 h1,
@@ -536,7 +538,7 @@ h5,
 
 h6,
 .h6 {
-  font-size: 12px;
+  font-size: 13px;
 }
 
 h1 small,
@@ -4501,7 +4503,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 }
 
 .navbar-inverse {
-  background-color: #9277DC;
+  background-color: #33CE6D;
   border-color: #ffffff;
 }
 

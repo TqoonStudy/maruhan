@@ -1,0 +1,40 @@
+﻿@model IList<Models.Board.Model.BoardItem>
+@{
+    ViewBag.Title = "Board";
+}
+@Html.Partial("GroupInfo")
+<div ng-app="main" ng-controller="BoardController">
+    <div id="writeModal">
+    </div>
+    <div id="realModal">
+        @*<form action="/Board/Write" method="post">*@
+            <input type="hidden" name="userid" id="userid" value="1" />
+            <input type="hidden" name="groupid" id="groupid" value="1"/>
+            <div id="writeModalTitle"><span>글쓰기</span><span class="closeBtn" ng-click="closeModal()">X</span></div>
+            <div id="writeContents">
+                <textarea name="content" id="content" ng-model="contents"></textarea>
+            </div>
+            <input class="btn btn-primary" type="button" value="등록" ng-click="postBoard()"/>
+        @*</form>*@
+
+    </div>
+
+
+    <div class="boardContent">
+        <div class="searchDiv">검색부분</div>
+        <div class="writeDiv" ng-click="openModal()">글쓰기부분</div>
+
+        <div class="boardDetailContent">
+            <table>
+                @foreach (var board in @Model)
+            {
+                    <tr>
+                        <td>@board.Id</td>
+                        <td>@board.Content</td>
+                    </tr>
+                }
+
+            </table>
+        </div>
+    </div>
+</div>

@@ -10,5 +10,6 @@ public string Groupname{ get;set;}="";
 public int Img{ get;set;}
 public string Groupinfo{ get;set;}="";
 public DateTime Regdate{ get;set;}=SqlDateTime.MinValue.Value;
+public string ColorCode { get; set; } = "";
 }
 }

@@ -1,29 +1,35 @@
 ﻿@{
-    ViewBag.Title = "Home Page";
+    ViewBag.Title = "밴드 홈";
 }
 
-<div>
-    <h3>내 밴드</h3>
-</div>
+<div class="indexBack">
 
-<div class="row" ng-app="main" ng-controller="BandController as band">
-<section class="joinBandList">
-<ul class="bandList">
+    <div>
+        <h3>내 밴드</h3>
+    </div>
 
-    <li ng-repeat="banditem in band.list">
-        <a href="#">
-            <div>
-                <div style="background-color:#fff; height:145px;">band이미지</div>
-                <div style="background-color:{{banditem.color}}; height:15px;"></div>
-                <div style="text-align:center;">
-                    <span>{{banditem.name}}</span>
-                    <span>{{banditem.cost}}</span>
-                </div>
-            </div>
-        </a>
-    </li>
+    <div class="row" ng-app="main" ng-controller="BandController">
+        <section class="joinBandList">
+            <ul class="bandList">
+                <li ng-repeat="banditem in list">
+                    <a href="#">
+                        <form id="form{{banditem.Id}}" action="/Board/List" method="post">
+                            <div ng-click="getBoard()">
+                                <input type="hidden" name="groupId" value="{{banditem.Id}}" />
+                                <div style="background-color:#fff; height:145px;">band이미지</div>
+                                <div style="background-color:{{banditem.ColorCode}}; height:15px;"></div>
+                                <div style="text-align:center;">
+                                    <span></span>
+                                    <span>{{banditem.Groupname}}</span>
+                                </div>
+                            </div>
+                        </form>
+                    </a>
+                </li>
 
-    <li><a><div style="background-color:#faff85; height:160px;">band이미지</div><div style="text-align:center;"><span>새로운 밴드 생성</span></div></a></li>
-</ul>
-</section>
+                <li class="newBandCreate"><a href="/Group/Create"><div style="background-image:url('/Content/img/plus.png'); background-size:160px 160px; height:160px;"></div><div style="text-align:center;"><span>새로운 밴드 생성</span></div></a></li>
+            </ul>
+        </section>
+    </div>
+
 </div>

@@ -6,16 +6,19 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - 내 ASP.NET 응용 프로그램</title>
+    <title>@ViewBag.Title</title>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    <!-- 합쳐지고 최소화된 최신 자바스크립트 -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-
 </head>
 
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="menuBarDiv">
-            <span class="glyphicon glyphicon-align-justify btn-lg" data-toggle="dropdown"></span>
             <ul class="dropdown-menu">
                 <li class="bandSearch"><font> 밴드 검색 </font></li>
             </ul>
@@ -27,27 +30,20 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Band", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("홈", "Index", "Home")</li>
-                    <li>@Html.ActionLink("정보", "About", "Home")</li>
-                    <li>@Html.ActionLink("연락처", "Contact", "Home")</li>
-                </ul>
+                    <div class="inner">
+                        <img style="display:block; width:70px;height:26px;" src="http://s.cmstatic.net/webclient/dres/20160617124908/images/press/h1_band.png" />
+                    </div>
                 @Html.Partial("_LoginPartial")
-            </div>
         </div>
     </div>
     <div class="container body-content">
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - 내 ASP.NET 응용 프로그램</p>
+            @Html.Partial("MaruhanFooter")
         </footer>
     </div>
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
 </body>
 </html>

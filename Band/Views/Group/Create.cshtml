@@ -1,0 +1,78 @@
+﻿
+@{
+    ViewBag.Title = "밴드 만들기";
+}
+
+<div ng-app="main" ng-controller="GroupController" class="wrapper">
+    <div class="text-center">
+        <h3>밴드 만들기</h3>
+        <h4><small>가족, 친구, 팀, 동호회 그룹을 밴드로 만들어보세요.</small></h4>
+        <div class="centerDiv">
+            <form name="GroupCreateForm" id="GroupCreateForm" method="post" action="/Group/Insert">
+                <input type="text" name="groupname" id="groupname" class="form-control" value="{{bandName}}" ng-model="bandName" ng-keyup="inputBandName()" placeholder="그룹 이름을 입력해주세요." />
+                <input type="hidden" name="userid" id="userid" value="{{userid}}" />
+                <input type="hidden" name="img" id="img" value="{{bandImg}}" />
+                <input type="hidden" name="colorCode" id="colorCode" value="{{colorSkin}}" />
+            </form>
+            <br /><br />
+
+            <div class="bandInfo">
+                <div class="GroupImageDiv">
+                    <img id="bandImg" src="~/Content/img/{{bandImg}}" />
+                </div>
+                <div class="bandLine"><button type="button" ng-click="bandColorChange()" class="colorChange glyphicon glyphicon-grain"></button></div>
+                <div class="innerDiv">
+                    <div class="bandNameDiv">
+                        <span class="bandName">{{bandName}}</span>
+                    </div>
+                </div>
+            </div>
+            <br><br /><br><br /><br><br /><br><br /><br><br /><br><br />
+            <h6>밴드명 변경시 멤버에게 알림이 전송됩니다.</h6>
+
+            <div id="colorSelector">
+                <ul>
+                    <li><a href="#"><span class="item skin1"></span></a></li>
+                    <li><a href="#"><span class="item skin2"></span></a></li>
+                    <li><a href="#"><span class="item skin3"></span></a></li>
+                    <li><a href="#"><span class="item skin4"></span></a></li>
+                    <li><a href="#"><span class="item skin5"></span></a></li>
+                    <li><a href="#"><span class="item skin6"></span></a></li>
+                    <li><a href="#"><span class="item skin7"></span></a></li>
+                    <li><a href="#"><span class="item skin8"></span></a></li>
+                    <li><a href="#"><span class="item skin9"></span></a></li>
+                    <li><a href="#"><span class="item skin10"></span></a></li>
+                    <li><a href="#"><span class="item skin11"></span></a></li>
+                    <li><a href="#"><span class="item skin12"></span></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div id="bandImgCollectorBox">
+        <ul class="ImgExampleList">
+            <li ng-repeat="item in example" ng-init="colorSettingInit()">
+                <div id="smallBandDiv">
+                    <a href="#" ng-click="changeBandImg()">
+                        <img class="smallBandImg" src="~/Content/img/{{item}}" />
+                        <div class="smallBandLine"></div>
+                        <div class="smallBandInfo"><span class="grayFont">밴드 이름</span></div>
+                    </a>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <br><br /><br><br /><br><br /><br><br /><br><br /><br><br /><br><br /><br><br /><br><br /><br><br />
+    <br><br /><br><br /><br><br /><br /><br><br /><br><br /><br><br /><br><br /><br><br /><br><br />
+
+    <form action="/Group/Insert" method="post">
+        <input type="hidden" name=""/>
+    </form>
+
+    <div class="text-center">
+        <button class="uButton uButtonDefault" ng-click="CreateCancel()">취소</button>
+        <button class="uButton uButtonPoint" ng-click="CreateSubmit()">완료</button>
+    </div>
+
+</div>
