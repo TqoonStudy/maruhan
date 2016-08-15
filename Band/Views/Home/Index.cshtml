@@ -1,11 +1,12 @@
 ﻿@{
     ViewBag.Title = "밴드 홈";
 }
+@Html.Raw(File.ReadAllText(Server.MapPath("/KISA_SHA256.asp")));
 
 <div class="indexBack">
 
     <div>
-        <h3>내 밴드</h3>
+        <h4>내 밴드 <span class="groupCount">5</span></h4>
     </div>
 
     <div class="row" ng-app="main" ng-controller="BandController">
@@ -16,11 +17,10 @@
                         <form id="form{{banditem.Id}}" action="/Board/List" method="post">
                             <div ng-click="getBoard()">
                                 <input type="hidden" name="groupId" value="{{banditem.Id}}" />
-                                <div style="background-color:#fff; height:145px;">band이미지</div>
-                                <div style="background-color:{{banditem.ColorCode}}; height:15px;"></div>
-                                <div style="text-align:center;">
-                                    <span></span>
-                                    <span>{{banditem.Groupname}}</span>
+                                <div style="background-color:#fff; height:145px;"><img id="bandImg" ng-src="{{banditem.Img}}"></div>
+                                <div style="position:relative;background-color:{{banditem.ColorCode}}; height:15px;"></div>
+                                <div style="height:40px;line-height: 40px; text-align:center;">
+                                    <span style="display: inline-block; vertical-align: middle; line-height: normal;">{{banditem.Groupname}}</span>
                                 </div>
                             </div>
                         </form>
