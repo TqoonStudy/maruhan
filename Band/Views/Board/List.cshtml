@@ -1,15 +1,18 @@
-﻿@model IList<Models.Board.Model.BoardItem>
+﻿@using Models.Board.Model;
+@using Models.Group.Model;
 @{
     ViewBag.Title = "Board";
+    GroupItem group = ViewData.Model;
 }
-@Html.Partial("GroupInfo")
+
+@Html.Partial("GroupInfo",group)
 <div ng-app="main" ng-controller="BoardController">
     <div id="writeModal">
     </div>
     <div id="realModal">
         @*<form action="/Board/Write" method="post">*@
             <input type="hidden" name="userid" id="userid" value="1" />
-            <input type="hidden" name="groupid" id="groupid" value="1"/>
+            <input type="hidden" name="groupid" id="groupid" value="@group.Id"/>
             <div id="writeModalTitle"><span>글쓰기</span><span class="closeBtn" ng-click="closeModal()">X</span></div>
             <div id="writeContents">
                 <textarea name="content" id="content" ng-model="contents"></textarea>
@@ -26,11 +29,11 @@
 
         <div class="boardDetailContent">
             <table>
-                @foreach (var board in @Model)
+                @foreach (var item in boardList)
             {
                     <tr>
-                        <td>@board.Id</td>
-                        <td>@board.Content</td>
+                        <td>@item.Id</td>
+                        <td>@item.Content</td>
                     </tr>
                 }
 

@@ -88,7 +88,7 @@
     top: 100px;
     background-color: #fff;
     width: 200px;
-    height: 500px;
+    height: 300px;
 }
 
     .groupInfo ul {
@@ -102,8 +102,14 @@
 
 #bandImg {
     margin: 0px;
-    width: 198px;
-    height: 160px;
+    width: 168px;
+    height: 145px;
+}
+
+#groupImg {
+    margin: 0px;
+    width: 200px;
+    height: 200px;
 }
 
 .boardContent {
@@ -347,7 +353,7 @@
     border-top:1px solid #a5a5a5;
     border-bottom:1px solid #a5a5a5;
 }
-#bandImgCollectorBox .ImgExampleList{left:50%; margin-left:350px;float:none; display:block;position:absolute;top:0px;left:0px;width:700px;}
+#bandImgCollectorBox .ImgExampleList{left:50%; margin-left:-350px;float:none; display:block;position:absolute;top:0px;width:700px;}
 #bandImgCollectorBox .ImgExampleList li{float:left; list-style:none;}
 #smallBandDiv{width:90px; height:110px; border:1px solid #cccccc; margin:20px;}
 #smallBandDiv a{text-decoration:none;}
@@ -380,4 +386,9 @@ button.uButton {
 
 #bandNameInput{
     width:380px;
+}
+
+.groupCount{
+    color:#30c884;
+    font-size:15px;
 }

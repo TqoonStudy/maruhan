@@ -10,7 +10,7 @@
         <div class="centerDiv">
             <form name="GroupCreateForm" id="GroupCreateForm" method="post" action="/Group/Insert">
                 <input type="text" name="groupname" id="groupname" class="form-control" value="{{bandName}}" ng-model="bandName" ng-keyup="inputBandName()" placeholder="그룹 이름을 입력해주세요." />
-                <input type="hidden" name="userid" id="userid" value="{{userid}}" />
+                <input type="hidden" name="userid" id="userid" value=1 />
                 <input type="hidden" name="img" id="img" value="{{bandImg}}" />
                 <input type="hidden" name="colorCode" id="colorCode" value="{{colorSkin}}" />
             </form>
@@ -18,7 +18,7 @@
 
             <div class="bandInfo">
                 <div class="GroupImageDiv">
-                    <img id="bandImg" src="~/Content/img/{{bandImg}}" />
+                    <img id="bandImg" src="{{bandImg}}" />
                 </div>
                 <div class="bandLine"><button type="button" ng-click="bandColorChange()" class="colorChange glyphicon glyphicon-grain"></button></div>
                 <div class="innerDiv">
@@ -54,7 +54,7 @@
             <li ng-repeat="item in example" ng-init="colorSettingInit()">
                 <div id="smallBandDiv">
                     <a href="#" ng-click="changeBandImg()">
-                        <img class="smallBandImg" src="~/Content/img/{{item}}" />
+                        <img class="smallBandImg" src="{{item}}"/>
                         <div class="smallBandLine"></div>
                         <div class="smallBandInfo"><span class="grayFont">밴드 이름</span></div>
                     </a>

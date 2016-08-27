@@ -1,7 +1,6 @@
 ﻿@{
     ViewBag.Title = "밴드 홈";
 }
-@Html.Raw(File.ReadAllText(Server.MapPath("/KISA_SHA256.asp")));
 
 <div class="indexBack">
 
@@ -13,9 +12,9 @@
         <section class="joinBandList">
             <ul class="bandList">
                 <li ng-repeat="banditem in list">
-                    <a href="#">
+                    <a  ng-click="getBoard()" href="">
                         <form id="form{{banditem.Id}}" action="/Board/List" method="post">
-                            <div ng-click="getBoard()">
+                            <div>
                                 <input type="hidden" name="groupId" value="{{banditem.Id}}" />
                                 <div style="background-color:#fff; height:145px;"><img id="bandImg" ng-src="{{banditem.Img}}"></div>
                                 <div style="position:relative;background-color:{{banditem.ColorCode}}; height:15px;"></div>

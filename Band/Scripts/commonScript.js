@@ -6,6 +6,7 @@ mainApp.controller('BandController', ['$scope', '$http', function ($scope, $http
 
     $scope.getBoard = function () {
         var groupId = this.banditem.Id;
+        console.log(groupId);
         var formId = "#form" + groupId;
         var form = $(formId);
         form.submit();
@@ -13,10 +14,16 @@ mainApp.controller('BandController', ['$scope', '$http', function ($scope, $http
 
 
     function getBandList() {
-        $http.post("/Group/getListByUserId", {UserId : 1}).then(function (res) {
-            $scope.list =  res.data;
-        });
+        $http.post("/Group/getListByUserId", { UserId: 1 }).then(function (res) {
+            var list = res.data;
+            for (var i = 0; i < list.length; i++) {
+                var bandImgId = list[i].Img;
+            }
+            $scope.list = list;
+        })
     }
+
+
 
 
 }]);
@@ -43,7 +50,8 @@ mainApp.controller('BoardController', function ($scope, $http) {
 });
 
 mainApp.controller('GroupController', function ($scope, $http) {
-    var colorCodeArr = ['#95d8f8', '#f19e9e', '#f39b47', '#fff430', '#a5a5a5', '#c2ef61', '#9c86e6', '#97a4f1', '#d68ffc', '#9cf8da', '#fcabf0', '#ffd73a'];
+    var colorCodeArr = ['#95d8f8', '#f19e9e', '#f39b47', '#fff430', '#a5a5a5', '#c2ef61',
+                                 '#9c86e6', '#97a4f1', '#d68ffc', '#9cf8da', '#fcabf0', '#ffd73a'];
     $scope.example = getImgArr();
 
     function shuffle(array) {
@@ -60,19 +68,17 @@ mainApp.controller('GroupController', function ($scope, $http) {
     }
 
     function getImgArr() {
-        var result = [];
-        for (var i = 1; i < 31; i++) {
-            var item = "img" + i+".jpg";
-            result.push(item);
-        }
-        $scope.bandImg = result[0];
-        return shuffle(result);
+        $http.post("/File/GetAllBandImg").then(function (res) {
+            $scope.example = shuffle(res.data);
+            $scope.bandImg = $scope.example[0];
+        });
     }
 
     $scope.colorSettingInit = function () {
         var randomcolor = colorCodeArr[parseInt(Math.random() * 12)];
         $(".bandLine").css("background-color", randomcolor);
         $(".colorChange").css("background-color", randomcolor);
+        $scope.colorSkin = randomcolor;
         $(".smallBandLine").css("background-color", randomcolor);
     };
 
@@ -98,30 +104,30 @@ mainApp.controller('GroupController', function ($scope, $http) {
         var hexCode = RGBtoHexColor(selectColor);
         $(".bandLine").css("background-color", selectColor);
         $(".colorChange").css("background-color", selectColor);
+        $scope.colorSkin = selectColor;
         $(".smallBandLine").css("background-color", selectColor);
 
     });
 
     $scope.inputBandName = function () {
-        if ($scope.bandName.toString() !="") {
+        if ($scope.bandName !="") {
             if ($scope.bandName.length > 12) {
                 $scope.bandName = $scope.bandName.substr(0, 12);
                 $('#example').popover('show');
             }
         }
     }
-
     $scope.changeBandImg = function () {
         $scope.bandImg = this.item;
+        $scope.bandImgNum = this.item;
     }
 
     $scope.CreateSubmit = function () {
-        console.log("그룹생성버튼을 눌렀다.");
+        $("#GroupCreateForm").submit();
     }
 
     $scope.CreateCancel = function () {
         console.log("그룹생성취소버튼을 눌렀다.");
-
     }
 
 });

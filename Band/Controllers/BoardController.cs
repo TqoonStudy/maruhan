@@ -1,8 +1,7 @@
 ﻿using Models.Board.Model;
+using Models.Group.Model;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace Band.Controllers
@@ -12,18 +11,21 @@ namespace Band.Controllers
 
         public ActionResult List(int groupId)
         {
-            var list = new Object();
+            IList<BoardItem> board = new List<BoardItem>();
+            GroupItem group;
 
             try
             {
-                list = COD.FindList<BoardItem>("select * from Board where groupid = "+groupId);
+                group = COD.FindItem<GroupItem>($@"SELECT *
+                                                                                            FROM [Group]
+                                                                                            WHERE id = {groupId}");
             }
             catch (Exception e)
             {
                 throw e;
             }
 
-            return View(list);
+            return View(group);
         }
 
         public void Write(BoardItem board)

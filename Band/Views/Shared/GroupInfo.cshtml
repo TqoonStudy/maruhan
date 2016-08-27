@@ -1,4 +1,4 @@
-﻿@model IList<Models.Board.Model.BoardItem>
+﻿@using Models.Group.Model;
 @{
     ViewBag.Title = "GroupInfo";
 }
@@ -6,10 +6,10 @@
 <div class="groupInfo">
     <ul>
         <li>
-            <a href="#">
-                <img id="bandImg" src="~/Content/img/plus.png"/>
+            <a href="">
+                <img id="groupImg" src="@Model" />
             </a>
-            <span>그룹이름</span>
+            <center><a href="">그룹이름</a></center>
         </li>
     </ul>
 </div>

@@ -20,7 +20,9 @@ namespace Band.Controllers
         public ActionResult getListByUserId(int userId)
         {
             //var list = groupService.getListByUserid(userId);
-            var list = COD.FindList<GroupItem>("select * from [Group] a where a.id IN(select groupid from GroupMember where userid = " + userId + ")");
+            var list = COD.FindList<GroupItem>($@"SELECT *
+                                                                        FROM [Group] a
+                                                                        WHERE a.userid = { userId}");
             return Json(list);
         }
 
@@ -34,11 +36,18 @@ namespace Band.Controllers
             return View();
         }
 
-        public ActionResult Insert()
+        public ActionResult Insert(string groupname, string img, string colorCode,int userid)
         {
+            GroupItem group = new GroupItem();
+            group.Groupname = groupname;
+            group.Img = img;
+            group.ColorCode = colorCode;
+            group.UserId = userid;
+            int result = groupService.insert(group);
+
             try
             {
-                return Json(new { result="success" },JsonRequestBehavior.AllowGet);
+                return Json(new { result="success",index = result },JsonRequestBehavior.AllowGet);
             }
             catch (Exception e)
             {
